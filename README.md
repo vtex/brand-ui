@@ -1,6 +1,6 @@
-# @vtex/brand-ui
+# VTEX Brand ui
 
-> Made with create-react-library
+> VTEX Brand Ui components library
 
 [![NPM](https://img.shields.io/npm/v/@vtex/brand-ui.svg)](https://www.npmjs.com/package/@vtex/brand-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -26,4 +26,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [vitoriaHeliane](https://github.com/vitoriaHeliane)
+MIT © [VTEX](https://github.com/vtex)
