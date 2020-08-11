@@ -79,20 +79,5 @@
     "ts-loader": "^8.0.1",
     "tsdx": "^0.13.2",
     "typescript": "^3.9.6"
-  },
-  "dependencies": {
-    "@react-aria/button": "^3.1.0",
-    "@react-aria/checkbox": "^3.1.0",
-    "@react-aria/focus": "^3.1.0",
-    "@react-aria/separator": "^3.1.0",
-    "@react-aria/switch": "^3.1.0",
-    "@react-aria/textfield": "^3.1.0",
-    "@react-aria/visually-hidden": "^3.1.0",
-    "@react-stately/toggle": "^3.1.0",
-    "@react-types/button": "^3.1.0",
-    "@react-types/switch": "^3.1.0",
-    "@react-types/textfield": "^3.1.0",
-    "polished": "^3.6.5",
-    "theme-ui": "^0.3.1"
   }
 }
