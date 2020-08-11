@@ -23,15 +23,29 @@
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "release:patch": "releasy patch --stable --notes",
-    "release:minor": "releasy minor --stable --notes",
-    "release:major": "releasy major --stable --notes"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "sideEffects": false,
   "peerDependencies": {
     "react": "^16.0.0"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/prompt": "^9.1.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
@@ -42,35 +56,43 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
+    "@types/theme-ui": "^0.3.5",
     "@vtex/prettier-config": "^0.3.1",
     "@vtex/tsconfig": "^0.5.0",
+    "babel-loader": "^8.1.0",
+    "commitizen": "^4.1.2",
     "eslint-config-vtex-react": "^6.7.0",
+    "git-cz": "^4.7.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
+    "jest-emotion": "^10.0.32",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "releasy": "^1.10.5",
+    "semantic-release": "^17.1.1",
     "ts-loader": "^8.0.1",
     "tsdx": "^0.13.2",
     "typescript": "^3.9.6"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn test"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
+  "dependencies": {
+    "@react-aria/button": "^3.1.0",
+    "@react-aria/checkbox": "^3.1.0",
+    "@react-aria/focus": "^3.1.0",
+    "@react-aria/separator": "^3.1.0",
+    "@react-aria/switch": "^3.1.0",
+    "@react-aria/textfield": "^3.1.0",
+    "@react-aria/visually-hidden": "^3.1.0",
+    "@react-stately/toggle": "^3.1.0",
+    "@react-types/button": "^3.1.0",
+    "@react-types/switch": "^3.1.0",
+    "@react-types/textfield": "^3.1.0",
+    "polished": "^3.6.5",
+    "theme-ui": "^0.3.1"
   }
 }
