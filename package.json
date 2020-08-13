@@ -1,10 +1,10 @@
 {
   "name": "@vtex/brand-ui",
-  "version": "1.0.0",
-  "description": "Made with create-react-library",
-  "author": "vitoriaHeliane",
+  "version": "0.0.0",
+  "description": "VTEX brand component library",
+  "author": "vtex",
   "license": "MIT",
-  "repository": "vitoriaHeliane/@vtex/brand-ui",
+  "repository": "vtex/brand-ui",
   "main": "dist/index.js",
   "module": "dist/brand-ui.esm.js",
   "typings": "dist/index.d.ts",
@@ -22,27 +22,60 @@
     "lint": "eslint src/ --ext .tsx,.ts",
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "commit": "git-cz --disable-emoji",
+    "semantic-release": "semantic-release"
   },
   "sideEffects": false,
   "peerDependencies": {
     "react": "^16.0.0"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/prompt": "^9.1.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
+    "@types/theme-ui": "^0.3.5",
     "@vtex/prettier-config": "^0.3.1",
     "@vtex/tsconfig": "^0.5.0",
+    "babel-loader": "^8.1.0",
+    "commitizen": "^4.1.2",
     "eslint-config-vtex-react": "^6.7.0",
+    "git-cz": "^4.7.0",
+    "husky": "^4.2.5",
+    "jest-emotion": "^10.0.32",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "semantic-release": "^17.1.1",
     "ts-loader": "^8.0.1",
     "tsdx": "^0.13.2",
     "typescript": "^3.9.6"
