@@ -1,6 +1,6 @@
-import { addParameters } from '@storybook/react';
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { addParameters } from '@storybook/react'
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 addParameters({
   docs: {
@@ -10,4 +10,4 @@ addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-});
+})

@@ -1,9 +1,2 @@
-import * as React from 'react'
-
-interface Props {
-  text: string
-}
-
-export const ExampleComponent = ({ text }: Props) => {
-  return <div>Example Component: {text}</div>
-}
+export * from 'theme-ui'
+export * from './components/Theme'
