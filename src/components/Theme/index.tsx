@@ -1,18 +1,16 @@
-import React, { FC } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { ThemeProvider, useThemeUI } from 'theme-ui'
 
-import { theme, AdminTheme } from './config'
+import theme, { BrandTheme } from './theme'
 
-const Theme: FC = ({ children }) => {
+export default function Theme({ children }: PropsWithChildren<{}>) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 
 interface BrandUIContext {
-  theme: AdminTheme
+  theme: BrandTheme
   colorMode: string
   setColorMode: React.Dispatch<React.SetStateAction<string>>
 }
 
-const useBrandTheme = (useThemeUI as unknown) as () => BrandUIContext
-
-export default { Theme, useBrandTheme }
+export const useBrandTheme = (useThemeUI as unknown) as () => BrandUIContext

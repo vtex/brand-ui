@@ -17,6 +17,6 @@ export interface SemanticShades {
   faded: string
 }
 
-export interface ThemeWithBrandColors extends Omit<Theme, 'colors'> {
+export interface BrandTheme extends Omit<Theme, 'colors'> {
   colors: Colors
 }
