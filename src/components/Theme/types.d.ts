@@ -4,17 +4,24 @@ export interface Colors {
   text: string
   background: string
   muted: string[]
-  base: string[]
-  primary: SemanticShades
-  secondary: SemanticShades
-  success: SemanticShades
-  warning: SemanticShades
-  danger: SemanticShades
+  primary: SemanticColor
+  secondary: SemanticColor
+  success: SemanticColor
+  warning: SemanticColor
+  danger: SemanticColor
 }
 
 export interface SemanticShades {
   enable: string
-  faded: string
+  hover: string
+  focused: string
+  active: string
+  contrast: string
+}
+
+export interface SemanticColor {
+  default: SemanticShades
+  washed: SemanticShades
 }
 
 export interface BrandTheme extends Omit<Theme, 'colors'> {
