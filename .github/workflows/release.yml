@@ -1,20 +1,18 @@
 name: Release
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
 
-jobs: 
+jobs:
   release:
     name: release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Install dependencies
         run: yarn
 
@@ -23,11 +21,11 @@ jobs:
         id: semantic
         with:
           extra_plugins: |
-            @semantic-release/git
             @semantic-release/commit-analyzer
             @semantic-release/release-notes-generator
-            @semantic-release/npm
             @semantic-release/changelog
+            @semantic-release/npm
+            @semantic-release/git
             @semantic-release/github
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
