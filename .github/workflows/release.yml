@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          extra_plugins: |
+            @semantic-release/git
+            @semantic-release/commit-analyzer
+            @semantic-release/release-notes-generator
+            @semantic-release/npm
+            @semantic-release/changelog
+            @semantic-release/github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
