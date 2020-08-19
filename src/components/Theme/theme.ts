@@ -13,8 +13,8 @@ const theme: BrandTheme = {
       default: {
         enable: '#F71963',
         active: '#F71963', /** ⚠️ missing specs */
-        focused: '#F71963', /** ⚠️ missing specs */
-        hover: '#E42760',
+        focused: '#D91657',
+        hover: '#D91657',
         contrast: '#FFFFFF',
       },
       washed: {

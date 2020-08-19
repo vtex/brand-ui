@@ -17,5 +17,3 @@ jobs:
       run: |
         yarn
         yarn test --passWithNoTests
-      env:
-        CI: true
