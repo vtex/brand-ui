@@ -1,13 +1,7 @@
-import { addParameters } from '@storybook/react'
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks'
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { themeDecorator } from '../src/storybook-utils'
 
-addParameters({
-  docs: {
-    container: DocsContainer,
-    page: DocsPage,
-  },
-  viewport: {
-    viewports: INITIAL_VIEWPORTS,
-  },
-})
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+}
+
+export const decorators = [themeDecorator]
