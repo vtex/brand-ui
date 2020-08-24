@@ -3718,6 +3718,11 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@vtex-components/button@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vtex-components/button/-/button-1.1.0.tgz#0bbd0a1cf03d6cb24c4b37289fc7ccd004a662dd"
+  integrity sha512-p3nz+iGphKS64C6cSs7GCEewoUWJf8vJp+f3S9XTNLL2aVxBYwIQqqtLxhkk10D/oZIxDByVySPLA4WdCaF2dg==
+
 "@vtex/prettier-config@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.1.tgz#c376999e826827aa11f4b0e08af9cf59ae9ee476"

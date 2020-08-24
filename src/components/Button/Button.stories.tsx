@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonProps } from './index'
+import Button, { ButtonProps } from './index'
 
 export default {
   title: 'Work in progress/Button',

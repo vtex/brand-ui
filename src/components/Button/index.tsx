@@ -1,58 +1,118 @@
-import React, { useRef, Ref, PropsWithChildren } from 'react'
-import {
-  Button as ThemeUIButton,
-} from 'theme-ui'
-import { useButton } from 'reakit/Button'
+import React, { Ref } from 'react'
+import { SxStyleProp, Flex } from 'theme-ui'
+import BaseButton, { A11yProps } from '@vtex-components/button'
+import merge from 'deepmerge'
 
-import { forwardRef, useForkRef } from '../../utils'
+import { forwardRef } from '../../utils'
+import { getVariant, getMeasures, getIconProps } from './styled'
+import { Size, Variant } from './types'
 
-function AdminButton(props: PropsWithChildren<ButtonProps>, forwardedRef: Ref<HTMLButtonElement>) {
+export interface BaseProps extends Omit<A11yProps, 'as'> {
+  /**
+   * ThemeUI sx prop
+   * @default {}
+   */
+  sx?: SxStyleProp
+}
+
+/**
+ * Component that handles all Button variants of the DS.
+ * It renders a button jsx element by default
+ * @example
+ * import { Button, ButtonProps } from 'brand-ui'
+ * <Button>Default Button</Button>
+ */
+const Button = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
   const {
     size = 'regular',
-    variation = 'primary',
+    variant = 'primary',
+    iconPosition = 'start',
+    sx = {},
+    icon,
     children,
     ...restProps
   } = props
 
-  const innerRef = useRef<HTMLButtonElement>(null)
-  const htmlProps = useButton({}, restProps)
-  const ref = useForkRef(innerRef, forwardedRef)
+  const iconStart = !!icon && iconPosition === 'start'
+  const iconEnd = !!icon && iconPosition === 'end'
+  const iconOnly = !!icon && !children
+
+  const mergedSx = merge<SxStyleProp>(
+    {
+      borderWidth: 1,
+      borderRadius: 3,
+      cursor: 'pointer',
+      position: 'relative',
+      borderStyle: 'solid',
+      '&:focus': {
+        outline: 'none',
+      },
+      ...getMeasures(size, iconStart, iconEnd, iconOnly),
+      ...getVariant(variant),
+    },
+    sx
+  )
+
+  const renderIcon = () => {
+    const iconProps = getIconProps(size)
+    return icon?.(iconProps)
+  }
 
   return (
-    <ThemeUIButton
-      {...htmlProps}
-      ref={ref}
-      sx={{
-        // ⚠️ WARNING: To be updated when design changes
-        m: 1,
-        borderWidth: 1,
-        cursor: 'pointer',
-        borderStyle: 'solid',
-        '&:disabled': {
-          color: 'muted.2',
-          bg: 'muted.4',
-          borderColor: 'muted.4',
-        }
-      }}
-    >
-      {children}
-    </ThemeUIButton>
+    <BaseButton sx={mergedSx} ref={ref} {...restProps}>
+      <Flex
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: iconEnd ? 'row-reverse' : 'row',
+          margin: 'auto',
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        {renderIcon()}
+        {children}
+      </Flex>
+    </BaseButton>
   )
 }
 
-export type Size = 'small' | 'regular'
-export type Variation = 'primary' | 'secundary' | 'tertiary'
-
-export interface ButtonProps {
+export interface ButtonProps
+  extends Pick<
+    BaseProps,
+    | 'sx'
+    | 'disabled'
+    | 'focusable'
+    | 'children'
+    | 'id'
+    | 'type'
+    | 'name'
+    | 'onClick'
+    | 'onMouseEnter'
+    | 'onMouseLeave'
+    | 'onMouseDown'
+    | 'onMouseUp'
+    | 'onFocus'
+    | 'onMouseOver'
+    | 'value'
+  > {
   /** Size of the button
    * @default regular
    * */
   size?: Size
+  /** Button variant
+   * @default filled
+   * */
+  variant?: Variant
   /**
-   * Action theme
-   * @default primary
+   * Icon of the button
    */
-  variation?: Variation
+  icon?: (props: { size: number; sx: SxStyleProp }) => JSX.Element
+  /**
+   * Position of the icon
+   * @default start
+   */
+  iconPosition?: 'start' | 'end'
 }
 
-export const Button = forwardRef(AdminButton)
+export default forwardRef(Button)
