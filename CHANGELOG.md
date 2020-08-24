@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/vtex/brand-ui/compare/v1.1.0...v1.1.1) (2020-08-24)
+
+
+### Bug Fixes
+
+* add missing colors variants ([bad25fe](https://github.com/vtex/brand-ui/commit/bad25fefbe6faa63614f52ef18d3282317eea0fa))
+
 # [1.1.0](https://github.com/vtex/brand-ui/compare/v1.0.0...v1.1.0) (2020-08-18)
 
 
