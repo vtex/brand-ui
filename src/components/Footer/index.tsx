@@ -10,18 +10,22 @@ const ICON_SIZE = 20
 
 const socialMediaLinks = [
   {
+    name: 'Facebook',
     to: 'https://www.facebook.com/vtexcommerce',
     icon: <IconFacebook size={ICON_SIZE} />,
   },
   {
+    name: 'Instagram',
     to: 'https://www.instagram.com/vtexcommerce/',
     icon: <IconInstagram size={ICON_SIZE} />,
   },
   {
+    name: 'YouTube',
     to: 'https://www.youtube.com/user/VTEXTV/',
     icon: <IconYouTube size={ICON_SIZE} />,
   },
   {
+    name: 'LinkedIn',
     to: 'https://www.linkedin.com/company/vtex/',
     icon: <IconLinkedIn size={ICON_SIZE} />,
   },
@@ -48,6 +52,7 @@ interface FooterLinkProps {
 
 interface FooterSocialMediaProps extends FooterLinkProps {
   icon: ReactNode
+  ariaLabel: string
 }
 
 export interface FooterProps {
@@ -60,20 +65,20 @@ export const FooterLink = ({
   fontSize = '1rem',
   children,
 }: PropsWithChildren<FooterLinkProps>) => (
-  <Link
-    sx={{
-      fontSize,
-      textDecoration: 'none',
-      color: 'muted.1',
-      '&:hover': {
-        color: 'primary.default.contrast',
-      },
-    }}
-    href={href}
-  >
-    {children}
-  </Link>
-)
+    <Link
+      sx={{
+        fontSize,
+        textDecoration: 'none',
+        color: 'muted.1',
+        '&:hover': {
+          color: 'primary.default.contrast',
+        },
+      }}
+      href={href}
+    >
+      {children}
+    </Link>
+  )
 
 export const FooterSection = ({ section }: FooterSectionProps) => (
   <Box sx={{ marginRight: ['0', '0', '0', '3rem'] }}>
@@ -114,8 +119,9 @@ export const FooterSection = ({ section }: FooterSectionProps) => (
   </Box>
 )
 
-const FooterSocialMedia = ({ href, icon }: FooterSocialMediaProps) => (
+const FooterSocialMedia = ({ href, icon, ariaLabel }: FooterSocialMediaProps) => (
   <Link
+    aria-label={ariaLabel}
     sx={{
       width: '2.5rem',
       height: '2.5rem',
@@ -205,6 +211,7 @@ const Footer = ({ links, footerSections }: FooterProps) => (
         <Box sx={{ display: 'flex' }}>
           {socialMediaLinks.map((socialMediaLink) => (
             <FooterSocialMedia
+              ariaLabel={socialMediaLink.name}
               key={socialMediaLink.to}
               href={socialMediaLink.to}
               icon={socialMediaLink.icon}
