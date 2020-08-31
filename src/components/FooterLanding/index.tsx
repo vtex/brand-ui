@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text } from 'theme-ui'
+import { Box, Text, Flex } from 'theme-ui'
 
 import Footer, { Link } from '../Footer'
 import IconVTEX from './IconVTEX'
@@ -31,7 +31,11 @@ const FooterLanding = ({ links }: FooterLandingProps) => (
         alignItems: ['start', 'start', 'center'],
       }}
     >
-      <IconVTEX width={80} height={42} />
+      <Flex
+        sx={{ color: 'white', justifyContent: 'center', alignItems: 'center' }}
+      >
+        <IconVTEX width={80} height={42} />
+      </Flex>
       <Box
         sx={{
           display: ['grid', 'grid', 'flex'],
