@@ -39,6 +39,7 @@ const FooterLanding = ({ links }: FooterLandingProps) => (
         sx={{
           display: ['grid', 'grid', 'flex'],
           gridTemplateColumns: 'repeat(2, 1fr)',
+          alignItems: 'end',
           columnGap: '1rem',
           width: ['100%', '100%', 'auto'],
           marginTop: ['2rem', '2rem', '0'],
