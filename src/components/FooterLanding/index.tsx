@@ -20,12 +20,11 @@ const FooterLanding = ({ links }: FooterLandingProps) => (
       paddingRight: '1.5em',
     }}
   >
-    <Box
+    <Flex
       sx={{
         maxWidth: '70rem',
         margin: '0 auto',
         paddingY: '4rem',
-        display: 'flex',
         flexDirection: ['column', 'column', 'row'],
         justifyContent: 'space-between',
         alignItems: ['start', 'start', 'center'],
@@ -65,7 +64,7 @@ const FooterLanding = ({ links }: FooterLandingProps) => (
           </Text>
         ))}
       </Box>
-    </Box>
+    </Flex>
   </Box>
 )
 

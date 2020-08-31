@@ -1,10 +1,10 @@
 import React, { ReactNode, PropsWithChildren } from 'react'
-import { Box, Text, Link } from 'theme-ui'
+import { Box, Text, Link, Flex } from 'theme-ui'
 
-import IconFacebook from './IconFacebook'
-import IconInstagram from './IconInstagram'
-import IconYouTube from './IconYouTube'
-import IconLinkedIn from './IconLinkedIn'
+import IconFacebook from './icons/IconFacebook'
+import IconInstagram from './icons/IconInstagram'
+import IconYouTube from './icons/IconYouTube'
+import IconLinkedIn from './icons/IconLinkedIn'
 
 const ICON_SIZE = 20
 
@@ -41,23 +41,9 @@ interface Section {
   links: Link[]
 }
 
-interface FooterSectionProps {
-  section: Section
-}
-
 interface FooterLinkProps {
   href: string
   fontSize?: string
-}
-
-interface FooterSocialMediaProps extends FooterLinkProps {
-  icon: ReactNode
-  ariaLabel: string
-}
-
-export interface FooterProps {
-  links?: Link[]
-  footerSections?: Section[]
 }
 
 export const FooterLink = ({
@@ -65,22 +51,22 @@ export const FooterLink = ({
   fontSize = '1rem',
   children,
 }: PropsWithChildren<FooterLinkProps>) => (
-    <Link
-      sx={{
-        fontSize,
-        textDecoration: 'none',
-        color: 'muted.1',
-        '&:hover': {
-          color: 'primary.default.contrast',
-        },
-      }}
-      href={href}
-    >
-      {children}
-    </Link>
-  )
+  <Link
+    sx={{
+      fontSize,
+      textDecoration: 'none',
+      color: 'muted.1',
+      '&:hover': {
+        color: 'primary.default.contrast',
+      },
+    }}
+    href={href}
+  >
+    {children}
+  </Link>
+)
 
-export const FooterSection = ({ section }: FooterSectionProps) => (
+export const FooterSection = ({ section }: { section: Section }) => (
   <Box sx={{ marginRight: ['0', '0', '0', '3rem'] }}>
     <Text
       as="p"
@@ -119,7 +105,16 @@ export const FooterSection = ({ section }: FooterSectionProps) => (
   </Box>
 )
 
-const FooterSocialMedia = ({ href, icon, ariaLabel }: FooterSocialMediaProps) => (
+interface FooterSocialMediaProps extends FooterLinkProps {
+  icon: ReactNode
+  ariaLabel: string
+}
+
+const FooterSocialMedia = ({
+  href,
+  icon,
+  ariaLabel,
+}: FooterSocialMediaProps) => (
   <Link
     aria-label={ariaLabel}
     sx={{
@@ -138,19 +133,24 @@ const FooterSocialMedia = ({ href, icon, ariaLabel }: FooterSocialMediaProps) =>
     }}
     href={href}
   >
-    <Box
+    <Flex
       sx={{
         color: 'muted.2',
         width: '100%',
-        display: 'flex',
+
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
       {icon}
-    </Box>
+    </Flex>
   </Link>
 )
+
+export interface FooterProps {
+  links?: Link[]
+  footerSections?: Section[]
+}
 
 const Footer = ({ links, footerSections }: FooterProps) => (
   <Box
@@ -162,14 +162,13 @@ const Footer = ({ links, footerSections }: FooterProps) => (
       color: 'background',
     }}
   >
-    <Box
+    <Flex
       sx={{
         maxWidth: '70rem',
         margin: '0 auto',
         paddingTop: ['4rem', '4rem', '8rem'],
         paddingBottom: ['2rem', '4rem'],
         paddingX: ['1rem', '1.5rem', '1.5rem', '0'],
-        display: 'flex',
         flexDirection: ['column', 'column', 'column', 'row'],
         justifyContent: 'space-between',
         alignItems: 'start',
@@ -180,9 +179,8 @@ const Footer = ({ links, footerSections }: FooterProps) => (
         alt="VTEX - Accelerate Commerce Transformation"
         title="VTEX - Accelerate Commerce Transformation"
       />
-      <Box
+      <Flex
         sx={{
-          display: 'flex',
           flexDirection: ['column', 'column', 'column', 'row'],
           marginTop: ['2rem', '4rem', '4rem', '0'],
         }}
@@ -190,25 +188,24 @@ const Footer = ({ links, footerSections }: FooterProps) => (
         {footerSections?.map((section) => (
           <FooterSection key={section.sectionName} section={section} />
         ))}
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
     <Box
       sx={{
         borderTop: '1px solid #222C44',
       }}
     >
-      <Box
+      <Flex
         sx={{
           maxWidth: '70rem',
           margin: '0 auto',
-          display: 'flex',
           flexDirection: ['column', 'column', 'row'],
           justifyContent: 'space-between',
           paddingY: '3rem',
           paddingX: ['1rem', '1.5rem', '1.5rem', '0'],
         }}
       >
-        <Box sx={{ display: 'flex' }}>
+        <Flex>
           {socialMediaLinks.map((socialMediaLink) => (
             <FooterSocialMedia
               ariaLabel={socialMediaLink.name}
@@ -217,8 +214,8 @@ const Footer = ({ links, footerSections }: FooterProps) => (
               icon={socialMediaLink.icon}
             />
           ))}
-        </Box>
-        <Box sx={{ display: 'flex', marginTop: ['2rem', '2rem', '0'] }}>
+        </Flex>
+        <Flex sx={{ marginTop: ['2rem', '2rem', '0'] }}>
           {links?.map((link, index) => (
             <Text
               key={link.name}
@@ -229,8 +226,8 @@ const Footer = ({ links, footerSections }: FooterProps) => (
               </FooterLink>
             </Text>
           ))}
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
     </Box>
   </Box>
 )
